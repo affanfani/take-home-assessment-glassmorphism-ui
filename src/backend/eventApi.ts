@@ -5,8 +5,7 @@ import {
   type EventDetails,
   type QuickLinkModule,
 } from '../state/eventState'
-import { MODULE_TYPES } from '../state/eventState'
-
+import { MODULE_TYPES } from '../constants/constantVariables'
 export function useEventApi() {
   const event = useRecoilValue(eventState)
   const setEvent = useSetRecoilState(eventState)

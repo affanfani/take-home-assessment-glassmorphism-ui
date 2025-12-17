@@ -45,7 +45,6 @@ export function DateTimeModal() {
         </div>
         <p className="modal-body">Pick when your event starts.</p>
         <div className="modal-field">
-          <label className="label">Starts</label>
           <DatePicker
             selected={start}
             onChange={(date) => setStart(date)}

@@ -1,10 +1,10 @@
-import { PhotoGalleryModule } from './PhotoGalleryModule.tsx'
+import { PhotoGalleryModule } from './PhotoGalleryModule'
 import { LinksModule } from './LinksModule'
 import { PrivacyModule } from './PrivacyModule'
 import { AnnouncementsModule } from './AnnouncementsModule'
-import type { QuickLinkModuleType } from '../../state/eventState'
+
 export const MODULE_RENDERERS: Record<
-  QuickLinkModuleType,
+  string,
   React.FC<{ module: any }>
 > = {
   photoGallery: PhotoGalleryModule,

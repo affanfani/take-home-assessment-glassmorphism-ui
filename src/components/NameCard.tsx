@@ -1,17 +1,16 @@
 import { useEventApi } from '../backend/eventApi'
+import { INPUT_PLACEHOLDERS } from '../constants/constantVariables'
 
 export function NameCard() {
   const { event, updateEvent } = useEventApi()
   return (
-    <div className="glass-card">
       <input
         name="eventName"
-        className="text-input title"
-        placeholder="Name your event"
+        className="page-title text-input title"
+        placeholder={INPUT_PLACEHOLDERS.EVENT_NAME}
         value={event.name}
         onChange={(e) => updateEvent({ name: e.target.value })}
       />
-    </div>
   )
 }
 

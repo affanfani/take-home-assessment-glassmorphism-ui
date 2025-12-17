@@ -50,6 +50,11 @@
   margin: 0 0 8px;
 }
 
+.modules-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .form {
   width: 100%;
   display: flex;
@@ -143,7 +148,7 @@
 
 .text-input.subtle {
   font-size: 16px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -153,7 +158,7 @@
   border: none;
   resize: none;
   background: transparent;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
   outline: none;
   line-height: 1.6;
@@ -489,6 +494,25 @@
   background: rgba(255, 255, 255, 0.18);
 }
 
+.pill-btn {
+  position: relative;
+}
+
+.pill-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pill-btn[disabled]:hover::after {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
 .muted-pill {
   color: rgba(255, 255, 255, 0.7);
   background-color: transparent;
@@ -530,7 +554,7 @@
 }
 
 .icon-pill {
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 8px 8px;
   
   border: none;
@@ -606,3 +630,408 @@
     height: 220px;
   }
 }
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.toast-success {
+  background: rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.5);
+  color: #4cb750;
+}
+
+.toast-error {
+  background: rgba(244, 67, 54, 0.2);
+  border: 1px solid rgba(244, 67, 54, 0.5);
+  color: #f44336;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+input:disabled,
+textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Description textarea scrollbar (glassmorphism-friendly) */
+.text-area {
+  max-height: 160px;
+  min-height: 80px;
+  resize: vertical;
+  overflow: auto;
+  padding-right: 8px;
+  background: transparent;
+}
+
+/* WebKit browsers */
+.text-area::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.text-area::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+.text-area::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12));
+  border-radius: 8px;
+  border: 2px solid rgba(0,0,0,0.0);
+  background-clip: padding-box;
+}
+.text-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* Firefox */
+.text-area {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.12) rgba(255,255,255,0.02);
+}
+
+.module-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Autofill styling for inputs (but not the title/event name) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.05) inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input:-internal-autofill-selected {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Completely remove autofill styling from event name/title input */
+input.text-input.title:-webkit-autofill,
+input.text-input.title:-webkit-autofill:hover,
+input.text-input.title:-webkit-autofill:focus,
+input.text-input.title:-webkit-autofill:active {
+  -webkit-box-shadow: none !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+input.text-input.title:-internal-autofill-selected {
+  background-color: transparent !important;
+  -webkit-text-fill-color: #fff !important;
+  box-shadow: none !important;
+}
+
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.module-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.module-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.module-form input {
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.module-form input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-item {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+
+.link-display {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.link-title {
+  color: #0a84ff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+  word-break: break-word;
+}
+
+.link-title:hover {
+  text-decoration: underline;
+}
+
+.link-url {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  word-break: break-all;
+}
+
+.link-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.link-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-edit input {
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.link-edit input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.empty-state {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 13px;
+  padding: 12px;
+  margin: 0;
+}
+
+/* Photo Gallery Module Styles */
+.module-description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.photo-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.photo-item:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1;
+}
+
+.photo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.photo-caption {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 11px;
+  text-align: center;
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.photo-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.photo-edit input {
+  width: 100%;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 11px;
+}
+
+.photo-edit input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* Privacy Module Styles */
+.privacy-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.privacy-item {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.privacy-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.privacy-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #0a84ff;
+}
+
+.privacy-select {
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.privacy-select option {
+  background: #0b0b0f;
+  color: #fff;
+}
+
+.privacy-hint {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 11px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.privacy-footer {
+  padding: 12px;
+  background: rgba(10, 132, 255, 0.05);
+  border: 1px solid rgba(10, 132, 255, 0.12);
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.privacy-notice {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+
+
+

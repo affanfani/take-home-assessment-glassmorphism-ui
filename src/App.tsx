@@ -14,6 +14,7 @@ import { DateTimeModal } from "./modals/DateTimeModal";
 import { LocationModal } from "./modals/LocationModal";
 import { FooterActions } from "./components/FooterActions";
 import { ModulesPanel } from "./components/ModulesPanel";
+import { Toaster } from "./components/Toaster";
 
 declare global {
   interface Window {
@@ -73,6 +74,7 @@ function App() {
       </main>
       <DateTimeModal />
       <LocationModal />
+      <Toaster />
     </div>
   );
 }

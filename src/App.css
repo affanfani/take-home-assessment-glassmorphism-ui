@@ -342,6 +342,7 @@
 }
 
 .plugin-action {
+  width: -webkit-fill-available;
   display: flex;
   align-items: center;
   gap: 10px;

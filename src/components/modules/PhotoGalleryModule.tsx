@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   eventState,
   type EventPhoto,
   type QuickLinkModule,
+  toastState,
 } from "../../state/eventState";
+import { ToastType } from "../../constants/constantVariables";
 import { GalleryIcon } from "../icons/GalleryIcon";
 
 interface PhotoGalleryModuleProps {
@@ -13,6 +15,7 @@ interface PhotoGalleryModuleProps {
 
 export function PhotoGalleryModule({ module }: PhotoGalleryModuleProps) {
   const [event, setEvent] = useRecoilState(eventState);
+  const setToast = useSetRecoilState(toastState);
   const [newPhotoUrl, setNewPhotoUrl] = useState("");
   const [newCaption, setNewCaption] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -22,7 +25,7 @@ export function PhotoGalleryModule({ module }: PhotoGalleryModuleProps) {
 
   const addPhoto = () => {
     if (!newPhotoUrl.trim()) {
-      alert("Please enter a photo URL");
+      setToast({ message: "Please enter a photo URL", type: ToastType.ERROR });
       return;
     }
 

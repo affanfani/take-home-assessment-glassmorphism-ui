@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   eventState,
   type EventLink,
   type QuickLinkModule,
+  toastState,
 } from "../../state/eventState";
+import { ToastType } from "../../constants/constantVariables";
 import { LinkIcon } from "../icons/LinkIcon";
 
 interface LinksModuleProps {
@@ -13,6 +15,7 @@ interface LinksModuleProps {
 
 export function LinksModule({ module }: LinksModuleProps) {
   const [event, setEvent] = useRecoilState(eventState);
+  const setToast = useSetRecoilState(toastState);
   const [newLinkTitle, setNewLinkTitle] = useState("");
   const [newLinkUrl, setNewLinkUrl] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -23,7 +26,10 @@ export function LinksModule({ module }: LinksModuleProps) {
 
   const addLink = () => {
     if (!newLinkTitle.trim() || !newLinkUrl.trim()) {
-      alert("Please enter both title and URL");
+      setToast({
+        message: "Please enter both title and URL",
+        type: ToastType.ERROR,
+      });
       return;
     }
 
@@ -47,7 +53,10 @@ export function LinksModule({ module }: LinksModuleProps) {
 
   const updateLink = (id: string) => {
     if (!editTitle.trim() || !editUrl.trim()) {
-      alert("Please enter both title and URL");
+      setToast({
+        message: "Please enter both title and URL",
+        type: ToastType.ERROR,
+      });
       return;
     }
 

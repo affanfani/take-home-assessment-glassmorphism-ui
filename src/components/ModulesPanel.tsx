@@ -1,8 +1,20 @@
 import { useModulesApi } from "../backend/eventApi";
+import { useSetRecoilState } from "recoil";
+import { toastState } from "../state/eventState";
+import { ToastType } from "../constants/constantVariables";
 
 export function ModulesPanel() {
   const { modules } = useModulesApi();
   const active = modules.filter((m) => m.active);
+
+  const setToast = useSetRecoilState(toastState);
+
+  const handleCustomize = () => {
+    setToast({
+      message: "This will be used for advanced customization for the event.",
+      type: ToastType.SUCCESS,
+    });
+  };
 
   return (
     <div className="modules-panel">
@@ -25,10 +37,14 @@ export function ModulesPanel() {
           <div className="hero-abstract hero-abstract-two" />
           <div className="hero-abstract hero-abstract-three" />
         </div>
-        <div className="plugin-action btn">
+        <button
+          className="plugin-action btn"
+          type="button"
+          onClick={handleCustomize}
+        >
           <span className="emoji">🎲</span>
           <span className="label">Customize</span>
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 import { typeLabel } from "../backend/eventApi";
-import { MODULE_TYPES } from "../constants/constantVariables";
+import { MODULE_TYPES, ToastType } from "../constants/constantVariables";
 
 export type EventLink = {
   id: string;
@@ -119,4 +119,17 @@ export const modulesState = atom<QuickLinkModule[]>({
       active: false,
     },
   ],
+});
+
+export type ToastPayload = {
+  message: string;
+  type: ToastType | "";
+};
+
+export const toastState = atom<ToastPayload>({
+  key: "toastState",
+  default: {
+    message: "",
+    type: "",
+  },
 });

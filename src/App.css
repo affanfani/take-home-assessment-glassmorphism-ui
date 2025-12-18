@@ -1,19 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 #root {
   min-height: 100vh;
-  background: radial-gradient(circle at 15% 20%, #f1c2db 0%, transparent 30%),
-    radial-gradient(circle at 80% 0%, #4f5293 0%, transparent 35%),
-    #0b0b0f;
+  background:
+    radial-gradient(circle at 15% 20%, #f1c2db 0%, transparent 30%),
+    radial-gradient(circle at 80% 0%, #4f5293 0%, transparent 35%), #0b0b0f;
 }
 
 .app-shell {
   min-height: 100vh;
   color: #fff;
-  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  font-family:
+    "DM Sans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
     sans-serif;
   position: relative;
-  background: linear-gradient(180deg, rgba(241, 194, 219, 0.08), rgba(79, 82, 147, 0.15) 40%, #000 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(241, 194, 219, 0.08),
+    rgba(79, 82, 147, 0.15) 40%,
+    #000 100%
+  );
   transition: background-image 0.3s ease;
 }
 
@@ -50,7 +60,7 @@
   margin: 0 0 8px;
 }
 
-.modules-stack{
+.modules-stack {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -151,7 +161,6 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-
 .text-area {
   width: 100%;
   height: 50px;
@@ -245,19 +254,25 @@
   color: #fff;
   cursor: pointer;
   backdrop-filter: blur(10px);
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
-.btn{
+.btn {
   cursor: pointer;
   backdrop-filter: blur(10px);
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
-.circle-btn:hover, .btn:hover{
+.circle-btn:hover,
+.btn:hover {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.12);
 }
 
-.circle-btn.solid ,.btn.solid{
+.circle-btn.solid,
+.btn.solid {
   background: rgba(127, 127, 127, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -438,7 +453,9 @@
   padding: 12px 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .primary-btn:hover {
@@ -455,7 +472,6 @@
   align-items: center;
   gap: 12px;
   margin-top: 18px;
-  
 }
 
 .detect-icon {
@@ -477,7 +493,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 4px;
+  margin-top: 0; /* remove extra top margin so spacing is controlled by .form gap only */
 }
 
 .pill-btn {
@@ -556,7 +572,7 @@
 .icon-pill {
   border-radius: 10px;
   padding: 8px 8px;
-  
+
   border: none;
   background: rgba(255, 255, 255, 0.1);
   color: #fff;
@@ -677,7 +693,6 @@ textarea:disabled {
   cursor: not-allowed;
 }
 
-/* Description textarea scrollbar (glassmorphism-friendly) */
 .text-area {
   max-height: 160px;
   min-height: 80px;
@@ -687,7 +702,6 @@ textarea:disabled {
   background: transparent;
 }
 
-/* WebKit browsers */
 .text-area::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -697,19 +711,22 @@ textarea:disabled {
   border-radius: 8px;
 }
 .text-area::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.12));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.12)
+  );
   border-radius: 8px;
-  border: 2px solid rgba(0,0,0,0.0);
+  border: 2px solid rgba(0, 0, 0, 0);
   background-clip: padding-box;
 }
 .text-area::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
-/* Firefox */
 .text-area {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.12) rgba(255,255,255,0.02);
+  scrollbar-color: rgba(255, 255, 255, 0.12) rgba(255, 255, 255, 0.02);
 }
 
 .module-card {
@@ -718,7 +735,6 @@ textarea:disabled {
   gap: 12px;
 }
 
-/* Autofill styling for inputs (but not the title/event name) */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -734,7 +750,6 @@ input:-internal-autofill-selected {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-/* Completely remove autofill styling from event name/title input */
 input.text-input.title:-webkit-autofill,
 input.text-input.title:-webkit-autofill:hover,
 input.text-input.title:-webkit-autofill:focus,
@@ -749,6 +764,27 @@ input.text-input.title:-internal-autofill-selected {
   -webkit-text-fill-color: #fff !important;
   box-shadow: none !important;
 }
+
+/* Hide native number spinners for inputs that use the project text-input class */
+.text-input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  -webkit-appearance: none; /* Safari/Chrome */
+  appearance: textfield;
+}
+
+.text-input[type="number"]::-webkit-outer-spin-button,
+.text-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* IE/Edge clear/expand buttons */
+.text-input[type="number"]::-ms-clear,
+.text-input[type="number"]::-ms-expand {
+  display: none;
+}
+
+/* Themed numeric input controls (hide native spinners and add custom buttons) */
 
 .module-header {
   display: flex;
@@ -867,7 +903,6 @@ input.text-input.title:-internal-autofill-selected {
   margin: 0;
 }
 
-/* Photo Gallery Module Styles */
 .module-description {
   color: rgba(255, 255, 255, 0.6);
   font-size: 13px;
@@ -960,7 +995,6 @@ input.text-input.title:-internal-autofill-selected {
   color: rgba(255, 255, 255, 0.3);
 }
 
-/* Privacy Module Styles */
 .privacy-settings {
   display: flex;
   flex-direction: column;
@@ -1030,8 +1064,3 @@ input.text-input.title:-internal-autofill-selected {
   margin: 0;
   line-height: 1.5;
 }
-
-
-
-
-

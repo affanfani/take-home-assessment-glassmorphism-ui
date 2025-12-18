@@ -1,4 +1,4 @@
-import type { QuickLinkModule } from '../../state/eventState'
+import type { QuickLinkModule } from "../../state/eventState";
 
 export function AnnouncementsModule({ module }: { module: QuickLinkModule }) {
   return (
@@ -8,5 +8,5 @@ export function AnnouncementsModule({ module }: { module: QuickLinkModule }) {
         <p>Send announcements and updates to your event attendees.</p>
       </div>
     </div>
-  )
+  );
 }

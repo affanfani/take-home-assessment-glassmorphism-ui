@@ -35,7 +35,7 @@ export function PhoneDraftBar() {
     setIsLoading(true);
     try {
       await new Promise((resolve) =>
-        setTimeout(resolve, PHONE_VERIFICATION_CONFIG.VERIFICATION_DELAY_MS)
+        setTimeout(resolve, PHONE_VERIFICATION_CONFIG.VERIFICATION_DELAY_MS),
       );
 
       const digitsOnly = phoneNumber.replace(/\D/g, "");
@@ -43,13 +43,16 @@ export function PhoneDraftBar() {
         setPhoneVerified(true);
         showToast(
           PHONE_VERIFICATION_MESSAGES.VERIFIED_SUCCESS,
-          ToastType.SUCCESS
+          ToastType.SUCCESS,
         );
       } else {
         showToast(PHONE_VERIFICATION_MESSAGES.INVALID_PHONE, ToastType.ERROR);
       }
-    } catch (error) {
-      showToast(PHONE_VERIFICATION_MESSAGES.VERIFICATION_ERROR, ToastType.ERROR);
+    } catch {
+      showToast(
+        PHONE_VERIFICATION_MESSAGES.VERIFICATION_ERROR,
+        ToastType.ERROR,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -81,12 +84,12 @@ export function PhoneDraftBar() {
         </div>
       </div>
       {toastMessage && (
-        <div className={`toast ${CSS_CLASSES[`TOAST_${toastType?.toUpperCase()}` as keyof typeof CSS_CLASSES]}`}>
+        <div
+          className={`toast ${CSS_CLASSES[`TOAST_${toastType?.toUpperCase()}` as keyof typeof CSS_CLASSES]}`}
+        >
           {toastMessage}
         </div>
       )}
     </>
   );
 }
-
-

@@ -1,33 +1,37 @@
-import { useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { eventState, type EventLink, type QuickLinkModule } from '../../state/eventState'
-import { LinkIcon } from '../icons/LinkIcon'
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import {
+  eventState,
+  type EventLink,
+  type QuickLinkModule,
+} from "../../state/eventState";
+import { LinkIcon } from "../icons/LinkIcon";
 
 interface LinksModuleProps {
-  module: QuickLinkModule
+  module: QuickLinkModule;
 }
 
 export function LinksModule({ module }: LinksModuleProps) {
-  const [event, setEvent] = useRecoilState(eventState)
-  const [newLinkTitle, setNewLinkTitle] = useState('')
-  const [newLinkUrl, setNewLinkUrl] = useState('')
-  const [editingId, setEditingId] = useState<string | null>(null)
-  const [editTitle, setEditTitle] = useState('')
-  const [editUrl, setEditUrl] = useState('')
+  const [event, setEvent] = useRecoilState(eventState);
+  const [newLinkTitle, setNewLinkTitle] = useState("");
+  const [newLinkUrl, setNewLinkUrl] = useState("");
+  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editUrl, setEditUrl] = useState("");
 
-  const links = (event.moduleData?.links || []) as EventLink[]
+  const links = (event.moduleData?.links || []) as EventLink[];
 
   const addLink = () => {
     if (!newLinkTitle.trim() || !newLinkUrl.trim()) {
-      alert('Please enter both title and URL')
-      return
+      alert("Please enter both title and URL");
+      return;
     }
 
     const newLink: EventLink = {
       id: `link-${Date.now()}`,
       title: newLinkTitle,
       url: newLinkUrl,
-    }
+    };
 
     setEvent((prev) => ({
       ...prev,
@@ -35,16 +39,16 @@ export function LinksModule({ module }: LinksModuleProps) {
         ...prev.moduleData,
         links: [...links, newLink],
       },
-    }))
+    }));
 
-    setNewLinkTitle('')
-    setNewLinkUrl('')
-  }
+    setNewLinkTitle("");
+    setNewLinkUrl("");
+  };
 
   const updateLink = (id: string) => {
     if (!editTitle.trim() || !editUrl.trim()) {
-      alert('Please enter both title and URL')
-      return
+      alert("Please enter both title and URL");
+      return;
     }
 
     setEvent((prev) => ({
@@ -52,15 +56,15 @@ export function LinksModule({ module }: LinksModuleProps) {
       moduleData: {
         ...prev.moduleData,
         links: links.map((link) =>
-          link.id === id ? { ...link, title: editTitle, url: editUrl } : link
+          link.id === id ? { ...link, title: editTitle, url: editUrl } : link,
         ),
       },
-    }))
+    }));
 
-    setEditingId(null)
-    setEditTitle('')
-    setEditUrl('')
-  }
+    setEditingId(null);
+    setEditTitle("");
+    setEditUrl("");
+  };
 
   const deleteLink = (id: string) => {
     setEvent((prev) => ({
@@ -69,20 +73,20 @@ export function LinksModule({ module }: LinksModuleProps) {
         ...prev.moduleData,
         links: links.filter((link) => link.id !== id),
       },
-    }))
-  }
+    }));
+  };
 
   const startEdit = (link: EventLink) => {
-    setEditingId(link.id)
-    setEditTitle(link.title)
-    setEditUrl(link.url)
-  }
+    setEditingId(link.id);
+    setEditTitle(link.title);
+    setEditUrl(link.url);
+  };
 
   const cancelEdit = () => {
-    setEditingId(null)
-    setEditTitle('')
-    setEditUrl('')
-  }
+    setEditingId(null);
+    setEditTitle("");
+    setEditUrl("");
+  };
 
   return (
     <div className="glass-card module-card">
@@ -153,7 +157,12 @@ export function LinksModule({ module }: LinksModuleProps) {
               ) : (
                 <div className="link-display">
                   <div className="link-content">
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="link-title">
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-title"
+                    >
                       {link.title}
                     </a>
                     <span className="link-url">{link.url}</span>
@@ -181,10 +190,7 @@ export function LinksModule({ module }: LinksModuleProps) {
         </div>
       )}
 
-      {links.length === 0 && (
-        <p className="empty-state">No links added yet</p>
-      )}
+      {links.length === 0 && <p className="empty-state">No links added yet</p>}
     </div>
-  )
+  );
 }
-

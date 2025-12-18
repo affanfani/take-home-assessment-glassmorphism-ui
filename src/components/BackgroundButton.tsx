@@ -1,22 +1,22 @@
-import { useRef } from 'react'
-import type { ChangeEvent } from 'react'
-import { useEventApi } from '../backend/eventApi'
+import { useRef } from "react";
+import type { ChangeEvent } from "react";
+import { useEventApi } from "../backend/eventApi";
 
 export function BackgroundButton() {
-  const fileInputRef = useRef<HTMLInputElement | null>(null)
-  const { updateEvent } = useEventApi()
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const { updateEvent } = useEventApi();
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    const reader = new FileReader()
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
     reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        updateEvent({ backgroundImage: reader.result })
+      if (typeof reader.result === "string") {
+        updateEvent({ backgroundImage: reader.result });
       }
-    }
-    reader.readAsDataURL(file)
-  }
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
     <>
@@ -36,7 +36,5 @@ export function BackgroundButton() {
         onChange={handleFileChange}
       />
     </>
-  )
+  );
 }
-
-

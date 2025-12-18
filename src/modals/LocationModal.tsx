@@ -1,31 +1,31 @@
-import { useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { locationModalOpenState } from '../state/eventState'
-import { useEventApi } from '../backend/eventApi'
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { locationModalOpenState } from "../state/eventState";
+import { useEventApi } from "../backend/eventApi";
 
 export function LocationModal() {
-  const [isOpen, setIsOpen] = useRecoilState(locationModalOpenState)
-  const { event, updateEvent } = useEventApi()
-  const [value, setValue] = useState(event.location)
+  const [isOpen, setIsOpen] = useRecoilState(locationModalOpenState);
+  const { event, updateEvent } = useEventApi();
+  const [value, setValue] = useState(event.location);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const handleClose = () => {
-    setValue(event.location)
-    setIsOpen(false)
-  }
+    setValue(event.location);
+    setIsOpen(false);
+  };
 
   const handleSave = () => {
-    updateEvent({ location: value })
-    setIsOpen(false)
-  }
+    updateEvent({ location: value });
+    setIsOpen(false);
+  };
 
   return (
     <div className="modal-backdrop" onClick={handleClose}>
       <div
         className="modal"
         onClick={(e) => {
-          e.stopPropagation()
+          e.stopPropagation();
         }}
       >
         <div className="modal-header">
@@ -71,7 +71,5 @@ export function LocationModal() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-

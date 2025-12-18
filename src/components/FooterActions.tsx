@@ -6,7 +6,5 @@ export function FooterActions() {
         <span className="label success">Go live</span>
       </button>
     </div>
-  )
+  );
 }
-
-

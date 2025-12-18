@@ -1,8 +1,8 @@
-import { useModulesApi } from '../backend/eventApi'
+import { useModulesApi } from "../backend/eventApi";
 
 export function ModulesPanel() {
-  const { modules } = useModulesApi()
-  const active = modules.filter((m) => m.active)
+  const { modules } = useModulesApi();
+  const active = modules.filter((m) => m.active);
 
   return (
     <div className="modules-panel">
@@ -31,7 +31,5 @@ export function ModulesPanel() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-

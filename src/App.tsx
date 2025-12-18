@@ -1,51 +1,53 @@
-import './App.css'
-import { useEffect } from 'react'
-import { useRecoilValue } from 'recoil'
-import { eventState, phoneVerifiedState } from './state/eventState'
-import { FlyerUploader } from './components/FlyerUploader'
-import { BackgroundButton } from './components/BackgroundButton'
-import { PhoneDraftBar } from './components/PhoneDraftBar'
-import { NameCard } from './components/NameCard'
-import { DetailsCard } from './components/DetailsCard'
-import { DescriptionCard } from './components/DescriptionCard'
-import { ModulesRenderer } from './components/ModulesRenderer'
-import { QuickLinksRow } from './components/QuickLinksRow'
-import { DateTimeModal } from './modals/DateTimeModal'
-import { LocationModal } from './modals/LocationModal'
-import { FooterActions } from './components/FooterActions'
+import "./App.css";
+import { useEffect } from "react";
+import { useRecoilValue } from "recoil";
+import { eventState, phoneVerifiedState } from "./state/eventState";
+import { FlyerUploader } from "./components/FlyerUploader";
+import { BackgroundButton } from "./components/BackgroundButton";
+import { PhoneDraftBar } from "./components/PhoneDraftBar";
+import { NameCard } from "./components/NameCard";
+import { DetailsCard } from "./components/DetailsCard";
+import { DescriptionCard } from "./components/DescriptionCard";
+import { ModulesRenderer } from "./components/ModulesRenderer";
+import { QuickLinksRow } from "./components/QuickLinksRow";
+import { DateTimeModal } from "./modals/DateTimeModal";
+import { LocationModal } from "./modals/LocationModal";
+import { FooterActions } from "./components/FooterActions";
+import { ModulesPanel } from "./components/ModulesPanel";
 
 declare global {
   interface Window {
-    getEventState?: () => any
-    printEventState?: () => void
+    // returning unknown keeps the global typing safe for external debugging use
+    getEventState?: () => unknown;
+    printEventState?: () => void;
   }
 }
 
 function App() {
-  const event = useRecoilValue(eventState)
-  const isPhoneVerified = useRecoilValue(phoneVerifiedState)
+  const event = useRecoilValue(eventState);
+  const isPhoneVerified = useRecoilValue(phoneVerifiedState);
   const backgroundStyle = event.backgroundImage
     ? {
         backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0.8) 100%), url(${event.backgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }
-    : {}
+    : {};
 
   useEffect(() => {
-    window.getEventState = () => JSON.parse(JSON.stringify(event))
-    window.printEventState = () => console.log('Event state:', event)
+    window.getEventState = () => JSON.parse(JSON.stringify(event));
+    window.printEventState = () => console.log("Event state:", event);
 
     return () => {
       try {
-        delete window.getEventState
-        delete window.printEventState
-      } catch (e) {
-        // ignore
+        delete window.getEventState;
+        delete window.printEventState;
+      } catch {
+        /* ignore: deletion may throw in some strict environments */
       }
-    }
-  }, [event])
+    };
+  }, [event]);
 
   return (
     <div className="app-shell" style={backgroundStyle}>
@@ -61,20 +63,18 @@ function App() {
               <PhoneDraftBar />
               <DetailsCard disabled={!isPhoneVerified} />
               <DescriptionCard disabled={!isPhoneVerified} />
-              {/* <CapacityCard />
-              <LinksCard /> */}
               <ModulesRenderer />
               <QuickLinksRow disabled={!isPhoneVerified} />
+              <ModulesPanel />
             </div>
-      <FooterActions />
+            <FooterActions />
           </section>
         </div>
       </main>
-      {/* <PropositionModal /> */}
       <DateTimeModal />
       <LocationModal />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

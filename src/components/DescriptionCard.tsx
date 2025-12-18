@@ -1,12 +1,12 @@
-import { useEventApi } from '../backend/eventApi'
-import { INPUT_PLACEHOLDERS } from '../constants/constantVariables'
+import { useEventApi } from "../backend/eventApi";
+import { INPUT_PLACEHOLDERS } from "../constants/constantVariables";
 
 interface DescriptionCardProps {
   disabled?: boolean;
 }
 
 export function DescriptionCard({ disabled = false }: DescriptionCardProps) {
-  const { event, updateEvent } = useEventApi()
+  const { event, updateEvent } = useEventApi();
 
   return (
     <div className="glass-card">
@@ -22,7 +22,5 @@ export function DescriptionCard({ disabled = false }: DescriptionCardProps) {
         disabled={disabled}
       />
     </div>
-  )
+  );
 }
-
-

@@ -1,23 +1,23 @@
-import { useRef } from 'react'
-import type { ChangeEvent } from 'react'
-import { useEventApi } from '../backend/eventApi'
-import { PencilIcon } from './icons/PencilIcon'
+import { useRef } from "react";
+import type { ChangeEvent } from "react";
+import { useEventApi } from "../backend/eventApi";
+import { PencilIcon } from "./icons/PencilIcon";
 
 export function FlyerUploader() {
-  const fileInputRef = useRef<HTMLInputElement | null>(null)
-  const { event, updateEvent } = useEventApi()
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const { event, updateEvent } = useEventApi();
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-    const reader = new FileReader()
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
     reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        updateEvent({ flyer: reader.result as string })
+      if (typeof reader.result === "string") {
+        updateEvent({ flyer: reader.result as string });
       }
-    }
-    reader.readAsDataURL(file)
-  }
+    };
+    reader.readAsDataURL(file);
+  };
 
   return (
     <div className="flyer-wrapper">
@@ -41,7 +41,5 @@ export function FlyerUploader() {
         onChange={handleFileChange}
       />
     </div>
-  )
+  );
 }
-
-

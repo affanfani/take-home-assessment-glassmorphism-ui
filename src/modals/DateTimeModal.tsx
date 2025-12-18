@@ -1,45 +1,49 @@
-import { useState } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import { useRecoilState } from 'recoil'
-import { dateModalOpenState } from '../state/eventState'
-import { useEventApi } from '../backend/eventApi'
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useRecoilState } from "recoil";
+import { dateModalOpenState } from "../state/eventState";
+import { useEventApi } from "../backend/eventApi";
 
 export function DateTimeModal() {
-  const [isOpen, setIsOpen] = useRecoilState(dateModalOpenState)
-  const { updateEvent } = useEventApi()
-  const [start, setStart] = useState<Date | null>(new Date())
+  const [isOpen, setIsOpen] = useRecoilState(dateModalOpenState);
+  const { updateEvent } = useEventApi();
+  const [start, setStart] = useState<Date | null>(new Date());
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const handleSave = () => {
-    if (!start) return
-    const formatted = start.toLocaleString('en-US', {
-      month: 'long',
-      day: '2-digit',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-    })
-    updateEvent({ dateTime: formatted })
-    setIsOpen(false)
-  }
+    if (!start) return;
+    const formatted = start.toLocaleString("en-US", {
+      month: "long",
+      day: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    updateEvent({ dateTime: formatted });
+    setIsOpen(false);
+  };
 
   const handleClose = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   return (
     <div className="modal-backdrop" onClick={handleClose}>
       <div
         className="modal"
         onClick={(e) => {
-          e.stopPropagation()
+          e.stopPropagation();
         }}
       >
         <div className="modal-header">
           <span className="modal-title">Date and time</span>
-          <button className="ghost-btn primary" type="button" onClick={handleSave}>
+          <button
+            className="ghost-btn primary"
+            type="button"
+            onClick={handleSave}
+          >
             Save
           </button>
         </div>
@@ -57,7 +61,5 @@ export function DateTimeModal() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-

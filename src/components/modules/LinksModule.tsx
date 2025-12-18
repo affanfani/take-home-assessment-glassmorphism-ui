@@ -104,7 +104,6 @@ export function LinksModule({ module }: LinksModuleProps) {
         <h4>{module.label}</h4>
       </div>
 
-      {/* Add new link form */}
       <div className="module-form">
         <input
           type="text"
@@ -125,7 +124,6 @@ export function LinksModule({ module }: LinksModuleProps) {
         </button>
       </div>
 
-      {/* List of links */}
       {links.length > 0 && (
         <div className="links-list">
           {links.map((link) => (

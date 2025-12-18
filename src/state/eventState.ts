@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { typeLabel } from "../backend/eventApi";
 import { MODULE_TYPES, ToastType } from "../constants/constantVariables";
 
 export type EventLink = {
@@ -90,6 +89,21 @@ export type QuickLinkModule = {
   label: string;
   active: boolean;
 };
+
+function typeLabel(type: string): string {
+  switch (type) {
+    case MODULE_TYPES.PHOTO_GALLERY:
+      return "Photo gallery";
+    case MODULE_TYPES.LINKS:
+      return "Links";
+    case MODULE_TYPES.PRIVACY:
+      return "Privacy";
+    case MODULE_TYPES.ANNOUNCEMENTS:
+      return "Announcements";
+    default:
+      return type;
+  }
+}
 
 export const modulesState = atom<QuickLinkModule[]>({
   key: "modulesState",

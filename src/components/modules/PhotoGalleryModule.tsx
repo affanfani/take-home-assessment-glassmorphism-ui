@@ -92,7 +92,6 @@ export function PhotoGalleryModule({ module }: PhotoGalleryModuleProps) {
         Guests can view and upload photos to your event gallery.
       </p>
 
-      {/* Add photo form */}
       <div className="module-form">
         <input
           type="url"
@@ -117,7 +116,6 @@ export function PhotoGalleryModule({ module }: PhotoGalleryModuleProps) {
         </button>
       </div>
 
-      {/* Photo gallery grid */}
       {photos.length > 0 && (
         <div className="photo-gallery">
           {photos.map((photo) => (

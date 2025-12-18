@@ -46,9 +46,7 @@ export function PrivacyModule({ module }: PrivacyModuleProps) {
         Control privacy settings and data handling for your event.
       </p>
 
-      {/* Privacy toggles */}
       <div className="privacy-settings">
-        {/* Allow Guest Photos */}
         <div className="privacy-item">
           <label className="privacy-label">
             <input
@@ -66,7 +64,6 @@ export function PrivacyModule({ module }: PrivacyModuleProps) {
           </p>
         </div>
 
-        {/* Allow Comments */}
         <div className="privacy-item">
           <label className="privacy-label">
             <input
@@ -84,7 +81,6 @@ export function PrivacyModule({ module }: PrivacyModuleProps) {
           </p>
         </div>
 
-        {/* Show Guest List */}
         <div className="privacy-item">
           <label className="privacy-label">
             <input
@@ -100,7 +96,6 @@ export function PrivacyModule({ module }: PrivacyModuleProps) {
           <p className="privacy-hint">Guests can see who else is attending</p>
         </div>
 
-        {/* Data Retention */}
         <div className="privacy-item">
           <label className="privacy-label">
             <span>Data retention period</span>
@@ -127,8 +122,8 @@ export function PrivacyModule({ module }: PrivacyModuleProps) {
 
       <div className="privacy-footer">
         <p className="privacy-notice">
-          ℹ️ Your privacy settings help protect attendee data and ensure
-          compliance with privacy regulations.
+          Your privacy settings help protect attendee data and ensure compliance
+          with privacy regulations.
         </p>
       </div>
     </div>

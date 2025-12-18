@@ -18,7 +18,6 @@ import { Toaster } from "./components/Toaster";
 
 declare global {
   interface Window {
-    // returning unknown keeps the global typing safe for external debugging use
     getEventState?: () => unknown;
     printEventState?: () => void;
   }
@@ -44,8 +43,8 @@ function App() {
       try {
         delete window.getEventState;
         delete window.printEventState;
-      } catch {
-        /* ignore: deletion may throw in some strict environments */
+      } catch (e) {
+        //pass
       }
     };
   }, [event]);
